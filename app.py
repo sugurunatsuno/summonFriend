@@ -3,6 +3,7 @@ import os
 
 client = discord.Client()
 
+
 @client.event
 async def on_ready():
     print("login")
@@ -18,6 +19,12 @@ async def on_message(message):
 
 @client.event
 async def on_voice_state_update(before, after):
+
+    # todo : ボイスチャットにインしている人がbotを除いて3人以上になった
+    # todo : ギルガメがボイスチャットにいない
+
+    # todo : Twitterでメンションを飛ばす
+
     avc = None
     if after.voice.voice_channel is not None:
         avc = after.voice.voice_channel
@@ -30,3 +37,6 @@ async def on_voice_state_update(before, after):
 token = os.environ["LOL"]
 
 client.run(token)
+
+
+# todo : ファイルを分けるdiscord, twitter, app, bot くらいに分けて拡張できるようにする
